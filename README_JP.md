@@ -14,7 +14,7 @@ ComfyUI 上で[Eagle](./https://jp.eagle.cool/)に画像を送信するための
 
 ### ComfyUI Manager
 
-未対応。
+`ComfyUI Eagle Feeder`で検索してください。
 
 ### Manual
 

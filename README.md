@@ -14,7 +14,7 @@ It temporarily launches a local file server and sends images to Eagle using the 
 
 ### ComfyUI Manager
 
-Not supported.
+Search for `ComfyUI Eagle Feeder`.
 
 ### Manual
 
