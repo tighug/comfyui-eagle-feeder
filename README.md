@@ -26,6 +26,10 @@ git clone https://github.com/tighug/comfyui-eagle-feeder.git
 
 ## Usage
 
+Supports PNG / Animated WEBP / MP4 formats.
+
+All inputs other than the ones listed below behave the same as ComfyUI’s standard SaveImage / SaveAnimatedWEBP / SaveVideo nodes.
+
 ![EagleFeeder](./doc/eagle.png)
 
 - `tags`: Tags to attach to the image.

@@ -26,6 +26,10 @@ git clone　https://github.com/tighug/comfyui-eagle-feeder.git
 
 ## Usage
 
+PNG/AnimatedWEBP/MP4 に対応しています。
+
+下記以外の入力は ComfyUI 標準の SaveImage/SaveAnimatedWEBP/SaveVideo と同じです。
+
 ![EagleFeeder](./doc/eagle.png)
 
 - `tags` : 画像のタグ
