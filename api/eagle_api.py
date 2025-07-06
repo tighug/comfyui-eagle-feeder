@@ -1,6 +1,8 @@
 import requests
 from loguru import logger
 
+FILE_SERVER_PORT = 8000
+
 
 class EagleAPI:
     def __init__(self, base_url: str, token: str):
@@ -16,11 +18,10 @@ class EagleAPI:
             logger.error(response.text)
         return response.json()["data"]
 
-    def add_from_url(
-        self, src_url: str, file_name: str, tag_list: list[str], folder_id: str
-    ) -> None:
+    def add_from_url(self, file_name: str, tag_list: list[str], folder_id: str) -> None:
         url = self.base_url + "/item/addFromURL"
         headers = {"Content-Type": "application/json"}
+        src_url = f"http://localhost:{FILE_SERVER_PORT}/{file_name}"
         json = {
             "url": src_url,
             "name": file_name,
