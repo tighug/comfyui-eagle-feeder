@@ -49,10 +49,7 @@ class EagleFeeder:
         self.eagle_api = EagleAPI(eagle_host, eagle_token)
 
         folder_list = self.eagle_api.list_folder()
-        folder_id_list = [
-            item["id"] for item in folder_list if item["name"] == folder_name
-        ]
-        folder_id = folder_id_list[0]
+        folder_id = self.find_id_by_name(folder_list, folder_name)
 
         for image in images:
             image = tensor_to_pil(image)
@@ -74,6 +71,18 @@ class EagleFeeder:
         EagleFeeder.file_server = FileServer(directory, port)
         EagleFeeder.file_server.start()
         logger.info(f"[EagleFeeder] File server started as {directory}")
+
+    def find_id_by_name(self, data: list, target_name: str) -> str | None:
+        for item in data:
+            if item.get("name") == target_name:
+                return item.get("id")
+
+            if "children" in item and isinstance(item["children"], list):
+                result = self.find_id_by_name(item["children"], target_name)
+                if result:
+                    return result
+
+        return None
 
     def get_file_name(self) -> str:
         now = datetime.now()
