@@ -23,25 +23,35 @@ class EagleFeederPng(EagleFeederBase):
             "hidden": {"prompt": "PROMPT", "extra_pnginfo": "EXTRA_PNGINFO"},
         }
 
+    INPUT_IS_LIST = True
+
     def send_to_eagle(
         self,
-        images: torch.Tensor,
-        tags: str,
-        folder_name: str,
-        eagle_host: str,
-        eagle_token: str,
-        embed_workflow: bool,
-        prompt=None,
-        extra_pnginfo=None,
+        images: list[torch.Tensor],
+        tags: list[str],
+        folder_name: list[str],
+        eagle_host: list[str],
+        eagle_token: list[str],
+        embed_workflow: list[bool],
+        prompt: list,
+        extra_pnginfo: list,
     ) -> dict:
+        images = images[0]
+        folder_name = folder_name[0]
+        eagle_host = eagle_host[0]
+        eagle_token = eagle_token[0]
+        embed_workflow = embed_workflow[0]
+        prompt = prompt[0]
+        extra_pnginfo = extra_pnginfo[0]
+
         self.eagle_api = EagleAPI(eagle_host, eagle_token)
 
         folder_list = self.eagle_api.list_folder()
         folder_id = self.find_id_by_name(folder_list, folder_name)
 
-        for image in images:
+        for idx, image in enumerate(images):
             image = tensor_to_pil(image)
-            file_name = self.get_file_name("PNG")
+            file_name = f'{idx:03}_{self.get_file_name("PNG")}'
             file_path = self.img_dir + "/" + file_name
 
             metadata = None
@@ -56,7 +66,7 @@ class EagleFeederPng(EagleFeederBase):
             else:
                 image.save(file_path, format="PNG")
 
-            tag_list = tags.split(",")
+            tag_list = tags[idx].split(",")
             self.eagle_api.add_from_url(file_name, tag_list, folder_id)
 
         return {}
