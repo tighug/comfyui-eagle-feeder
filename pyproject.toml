@@ -1,7 +1,7 @@
 [project]
 name = "eagle-feeder"
 description = "A custom node for ComfyUI that allows you to send images directly to [a/Eagle](https://jp.eagle.cool/)."
-version = "1.1.0"
+version = "1.2.0"
 license = {file = "LICENSE"}
 dependencies = ["loguru==0.7.3", "Pillow==11.2.1", "Requests==2.32.3", "torch==2.6.0", "torchvision==0.21.0"]
 
