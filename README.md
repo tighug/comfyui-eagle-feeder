@@ -49,6 +49,7 @@ All inputs other than the ones listed below behave the same as ComfyUI’s stand
 - `eagle_token`: API token for Eagle.
 
   - You can find this under `Preferences → Developer` in Eagle.
+  - If left empty, the environment variable `EAGLE_TOKEN` is used instead. This keeps the token out of saved workflows, so you can share them (e.g. in a public repository) safely.
 
 Token location in Eagle:
 ![EagleFeeder Token](./doc/eagle_token.png)
