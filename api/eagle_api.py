@@ -1,3 +1,5 @@
+import os
+
 import requests
 from loguru import logger
 
@@ -7,7 +9,8 @@ FILE_SERVER_PORT = 8000
 class EagleAPI:
     def __init__(self, base_url: str, token: str):
         self.base_url = base_url + "/api"
-        self.token = token
+        # ノードのトークン欄が空なら環境変数から読む（ワークフローにトークンを残さないため）
+        self.token = token or os.environ.get("EAGLE_TOKEN", "")
 
     def list_folder(self) -> list:
         url = self.base_url + "/folder/list"

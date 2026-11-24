@@ -42,6 +42,7 @@ PNG/AnimatedWEBP/MP4 に対応しています。
   - Eagle の仕様上、ポート番号(41595)は固定です。
 - `eagle_token` : Eagle の API トークン
   - Eagle の`環境設定 → 開発者`から確認可能です。
+  - 空にすると、環境変数 `EAGLE_TOKEN` の値を使います。ワークフローにトークンが残らないので、公開リポジトリなどにそのまま置けます。
 
 トークンの記載箇所
 ![EagleFeeder Token](./doc/eagle_token.png)
